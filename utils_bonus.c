@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hes-saou <hes-saou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hes-saou <hes-saou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:18:44 by hes-saou          #+#    #+#             */
-/*   Updated: 2024/11/11 19:53:46 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/02/16 17:20:26 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minitalk.h"
 
 int	ft_atoi(const char *nptr)
 {
@@ -38,4 +38,21 @@ int	ft_atoi(const char *nptr)
 		i++;
 	}
 	return (sign * result);
+}
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	char	digit;
+	long	num;
+
+	num = n;
+	if (num < 0)
+	{
+		write(fd, "-", 1);
+		num = -num;
+	}
+	if (num >= 10)
+		ft_putnbr_fd(num / 10, fd);
+	digit = (num % 10) + '0';
+	write(fd, &digit, 1);
 }
