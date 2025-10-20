@@ -1,7 +1,9 @@
 CC = cc
 CFLAGS = -Werror -Wextra -Wall
+
 NAME_SERVER = server
 NAME_CLIENT = client
+
 NAME_SERVER_BONUS = server_bonus
 NAME_CLIENT_BONUS = client_bonus
 
@@ -32,7 +34,6 @@ clean:
 fclean: clean
 	rm -f $(NAME_SERVER) $(NAME_CLIENT) $(NAME_SERVER_BONUS) $(NAME_CLIENT_BONUS)
 
-do: all clean
 
 re: fclean all
 

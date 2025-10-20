@@ -6,7 +6,7 @@
 /*   By: hes-saou <hes-saou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 17:24:07 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/02/16 23:30:06 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/02/17 10:15:53 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,13 @@ void	send_char(pid_t pid, char c)
 	while (bit--)
 	{
 		if ((c >> bit) & 1)
-		{
 			check = kill(pid, SIGUSR2);
-			if(check == -1)
-			{
-				write(2, "Process n'est pas active ou incorrecte pid\n", 43);
-				exit(1);
-			}
-		}
 		else
-		{
 			check = kill(pid, SIGUSR1);
-			if(check == -1)
-			{
-				write(2, "Process n'est pas active ou incorrecte pid 1", 43);
-				exit(1);
-			}
+		if (check == -1)
+		{
+			write(2, "Process n'est pas actif ou PID incorrect\n", 41);
+			exit(1);
 		}
 		while (g_flag == 0)
 			;

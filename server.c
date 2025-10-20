@@ -6,19 +6,19 @@
 /*   By: hes-saou <hes-saou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 17:24:04 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/02/16 23:15:31 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/02/17 11:24:19 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	handle_signal(int sig, siginfo_t *info, void *context)
+void	handle_signal(int sig, siginfo_t *info, void *oldest)
 {
-	static char	c = 0;
-	static int	bit = 0;
+	static char		c = 0;
+	static int		bit = 0;
 	static pid_t	pid;
 
-	(void)context;
+	(void)oldest;
 	if (pid != info->si_pid)
 	{
 		c = 0;
